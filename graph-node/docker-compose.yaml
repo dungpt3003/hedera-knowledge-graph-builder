@@ -21,6 +21,7 @@ services:
       ipfs: 'ipfs:5001'
       ethereum: 'testnet:https://testnet.hashio.io/api'
       GRAPH_LOG: info
+      GRAPH_ETHEREUM_GENESIS_BLOCK_NUMBER: 1
   ipfs:
     image: ipfs/go-ipfs:v0.10.0
     ports:

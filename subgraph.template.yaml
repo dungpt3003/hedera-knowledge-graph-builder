@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 description: Graph for Greeter contracts
-repository: https://github.com/daniel-k-ivanov/hedera-subgraph-repo-example
+repository: https://github.com/hashgraph/hedera-subgraph-example
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,12 +8,12 @@ dataSources:
     name: Greeter
     network: testnet
     source:
-      address: '{{Greeter}}'
+      address: "0x157B93c04a294AbD88cF608672059814b3ea38aE"
       abi: IGreeter
-      startBlock: {{startBlock}}
+      startBlock: 27460615
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
         - Greeting
