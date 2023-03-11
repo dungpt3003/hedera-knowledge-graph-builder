@@ -42,13 +42,13 @@ npm install
 
 6. Add the API endpoint URL to the `ethereum` property in the `docker-compose.yaml` file.
 
-7. Start the local graph node by running the following command:
+7. Start the local graph node:
 
 ```shell
 npm run graph-node
 ```
 
-8. Generate the AssemblyScript types by running the following code:
+8. Generate the AssemblyScript types:
 
 ```shell
 graph codegen
