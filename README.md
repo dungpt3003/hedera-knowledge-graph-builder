@@ -6,15 +6,15 @@ The Hedera Subgraph Example Project demonstrates how to create and deploy a subg
 
 ## Project Files and Folders
 
-- `docker.compose.yaml` - The Docker Compose configuration file required for the project, which include the API endpoint that connects the graph node to a specified network. 
+- `docker.compose.yaml` - The configuration file that's used by Docker Compose to define and run containers that make up your local graph node. This file specifies settings, including container images, environment variables, and network configuration.
 
-- `subgraph.yaml` - The Graph configuration file to specify the schema and data that The Graph indexes and makes available for querying. 
+- `subgraph.yaml` - The Graph configuration file to specify the schema and data that the subgraph indexes and makes available for querying. 
 
-- `schema.graphql` - The GraphQL schema definition for a GraphQL API, defining the types of data that can be queried, relationship between them, and serves as a contract between the client and server.
+- `schema.graphql` - The GraphQL schema for the subgrapg, defining the types of data that can be queried, relationship between entities, and specifies the fields that can be queried.
 
-- `mappings.ts` - The Typescript file that defines the mapping functions that transform blockchain data into GraphQL entities.
+- `mappings.ts` - The file that contains the mapping function that translates the events emitted by your smart contract into GraphQL entities that the subgraph can index.
 
-- `/generated` - The folder that contains the auto-generated code based on the configuration and schema files.
+- `/generated` - The auto-generated folder by The Graph's CLI tooling and contains JSON ABIs, a GraphQL schema, and TypeScript and AssemblyScript types used to interface with your smart contract and subgraph.
 
 ## Setup
 
@@ -24,13 +24,13 @@ The Hedera Subgraph Example Project demonstrates how to create and deploy a subg
 git clone https://github.com/hashgraph/hedera-subgraph-example.git
 ```
 
-2. Once you've cloned the repository, open your IDE terminal and navigate to the root directory of the project:
+2. Once you've cloned the repository, open your IDE terminal and navigate to the root directory of the project and change directories:
 
 ```shell
 cd hedera-subgraph-example
 ```
 
-3. Once you've cloned the repository, open your IDE terminal and navigate to the root directory of the project. Run the following command to install all the necessary dependencies:
+3. Once you've cloned the repository, open your IDE terminal and navigate to the root directory of your project. Run the following command to install all the necessary dependencies:
 
 ```shell
 npm install
@@ -38,9 +38,9 @@ npm install
 
 4. Rename the `subgraph.template.yaml` file to `subgraph.yaml`.
 
-5. Add the deployed contract address to the `address` property and the start block number in the `startBlock` property in the `subgraph.yaml` file.
+5. Add the deployed Greeter contract address to the `address` property and the start block number to the `startBlock` property in the `subgraph.yaml` file.
 
-6. Add the API endpoint URL to the `ethereum` property in the `docker-compose.yaml` file.
+6. Add the Hashio Testnet API endpoint URL to the `ethereum` field under the `environment` object inside the `docker-compose.yaml` file.
 
 7. Start the local graph node:
 
