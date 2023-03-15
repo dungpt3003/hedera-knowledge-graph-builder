@@ -8,9 +8,9 @@ dataSources:
     name: Greeter
     network: testnet
     source:
-      address: { { YOUR CONTRACT ADDRESS } }
+      address: "YOUR CONTRACT ADDRESS"
       abi: IGreeter
-      startBlock: { { YOUR START BLOCK } } 
+      startBlock: YOUR START BLOCK
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
