@@ -1,6 +1,6 @@
 # Hedera Subgraph Example Project
 
-The Hedera Subgraph Example Project demonstrates how to create and deploy a subgraph to a local graph node using The Graph Protocol. Based on the [Hedera Hardhat Example Project Repo](https://github.com/hashgraph/hedera-hardhat-example-project). For more information about subgraphs, check out their docs [here](https://thegraph.com/docs). 
+The Hedera Subgraph Example Project demonstrates how to create and deploy a subgraph to a local graph node using The Graph Protocol. Based on the [Hedera Hardhat Example Project Repo](https://github.com/hashgraph/hedera-hardhat-example-project). For more information about subgraphs, check out The Graph Protocol documentation [here](https://thegraph.com/docs). 
 
 > :fire: Check out the step-by-step tutorial [here](https://docs.hedera.com/hedera/more-tutorials/deploy-a-subgraph-using-the-graph).
 
