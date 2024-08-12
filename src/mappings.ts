@@ -19,7 +19,25 @@
 
 import { GreetingSet} from '../generated/Greeter/IGreeter';
 import {Greeting} from "../generated/schema";
+import { Transfer } from "../generated/MyDataSource/MyContract";
+import { TransactionEntity } from "../generated/schema";
 
+export function handleTransfer(event: Transfer): void {
+  // Create a unique ID for the transaction using the transaction hash and log index
+  let id = event.transaction.hash.toHex() + "-" + event.logIndex.toString();
+
+  // Create a new TransactionEntity instance with the generated ID
+  let transaction = new TransactionEntity(id);
+
+  // Set the entity fields with data from the event
+  transaction.from = event.params.from;
+  transaction.to = event.params.to;
+  transaction.value = event.params.value;
+  transaction.timestamp = event.block.timestamp;
+
+  // Save the entity to the store
+  transaction.save();
+}
 export function handleGreetingSet(event: GreetingSet): void {
 	// Entities can be loaded from the store using a string ID; this ID
 	// needs to be unique across all entities of the same type
