@@ -4,3 +4,6 @@
 /generated/
 /graph-node/data/
 /subgraph.yaml
+/backend/.env
+/frontend/.env
+/backend/hedera/
