@@ -1,0 +1,31 @@
+
+Å½dataSources:
+  - kind: ethereum/contract
+    mapping:
+      abis:
+        - file:
+            /: /ipfs/QmZQbrdhaR2p2EZR6raiLbpgX5hjKW4S5cDgy1VvHKmjtH
+          name: IGreeter
+      apiVersion: 0.0.6
+      entities:
+        - Greeting
+      eventHandlers:
+        - event: GreetingSet(string)
+          handler: handleGreetingSet
+      file:
+        /: /ipfs/QmSgPD6LpDLHuPJuz3jF4R9e9zRGYV4PQyoB7jsaeUpVVp
+      kind: ethereum/events
+      language: wasm/assemblyscript
+    name: Greeter
+    network: testnet
+    source:
+      abi: IGreeter
+      address: '0xc9427f7c965d3d10aacd4c2baf3eeb6311a2d891'
+      startBlock: 7906669
+description: Graph for Greeter contracts
+repository: 'https://github.com/hashgraph/hedera-subgraph-example'
+schema:
+  file:
+    /: /ipfs/QmVtZMzbjU6QHEFfrCJ5NhbP5vUNrukaussxXZ4Esf3qCm
+specVersion: 0.0.4
+½
