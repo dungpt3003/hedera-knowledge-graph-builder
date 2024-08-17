@@ -60,3 +60,11 @@
 04:32:54.008815 version@stat F·[3] S·11KiB[11KiB] Sc·[0.75]
 04:32:54.012601 db@janitor F·5 G·0
 04:32:54.012975 db@open done T·14.46275ms
+=============== Aug 17, 2024 (UTC) ===============
+08:40:16.733849 table@compaction L0·3 -> L1·0 S·11KiB Q·324
+08:40:16.737786 table@build created L1@15 N·49 S·6KiB "/F5..O4I,v110":"/pr..TXC,v86"
+08:40:16.738639 version@stat F·[0 1] S·6KiB[0B 6KiB] Sc·[0.00 0.00]
+08:40:16.739339 table@compaction committed F-2 S-4KiB Ke·0 D·59 T·3.697416ms
+08:40:16.740350 table@remove removed @12
+08:40:16.740925 table@remove removed @5
+08:40:16.742359 table@remove removed @2

@@ -11,7 +11,7 @@ import {
   BigDecimal,
 } from "@graphprotocol/graph-ts";
 
-export class Greeting extends Entity {
+export class Label extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -19,22 +19,22 @@ export class Greeting extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save Greeting entity without an ID");
+    assert(id != null, "Cannot save Label entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type Greeting must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type Label must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set("Greeting", id.toString(), this);
+      store.set("Label", id.toString(), this);
     }
   }
 
-  static loadInBlock(id: string): Greeting | null {
-    return changetype<Greeting | null>(store.get_in_block("Greeting", id));
+  static loadInBlock(id: string): Label | null {
+    return changetype<Label | null>(store.get_in_block("Label", id));
   }
 
-  static load(id: string): Greeting | null {
-    return changetype<Greeting | null>(store.get("Greeting", id));
+  static load(id: string): Label | null {
+    return changetype<Label | null>(store.get("Label", id));
   }
 
   get id(): string {
@@ -50,8 +50,52 @@ export class Greeting extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get currentGreeting(): string {
-    let value = this.get("currentGreeting");
+  get value(): BigInt {
+    let value = this.get("value");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set value(value: BigInt) {
+    this.set("value", Value.fromBigInt(value));
+  }
+}
+
+export class RelationshipType extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save RelationshipType entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type RelationshipType must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set("RelationshipType", id.toString(), this);
+    }
+  }
+
+  static loadInBlock(id: string): RelationshipType | null {
+    return changetype<RelationshipType | null>(
+      store.get_in_block("RelationshipType", id),
+    );
+  }
+
+  static load(id: string): RelationshipType | null {
+    return changetype<RelationshipType | null>(
+      store.get("RelationshipType", id),
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -59,7 +103,20 @@ export class Greeting extends Entity {
     }
   }
 
-  set currentGreeting(value: string) {
-    this.set("currentGreeting", Value.fromString(value));
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get value(): BigInt {
+    let value = this.get("value");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set value(value: BigInt) {
+    this.set("value", Value.fromBigInt(value));
   }
 }

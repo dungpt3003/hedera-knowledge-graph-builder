@@ -17,23 +17,26 @@
  *
  */
 
-import { GreetingSet} from '../generated/Greeter/IGreeter';
-import {Greeting} from "../generated/schema";
-
-export function handleGreetingSet(event: GreetingSet): void {
-	// Entities can be loaded from the store using a string ID; this ID
-	// needs to be unique across all entities of the same type
-	let entity = Greeting.load(event.transaction.hash.toHexString());
-
-	// Entities only exist after they have been saved to the store;
-	// `null` checks allow to create entities on demand
-	if (!entity) {
-		entity = new Greeting(event.transaction.hash.toHex());
+import {Label, RelationshipType} from "../generated/schema";
+import { LabelsUpdated, RelationshipTypesUpdated } from '../generated/LabelRelationshipContract/LabelRelationshipContract';
+// Handles LabelsUpdated event
+export function handleLabelsUpdated(event: LabelsUpdated): void {
+	let labelEntities = event.params.newLabels;
+  
+	for (let i = 0; i < labelEntities.length; i++) {
+	  let labelEntity = new Label(labelEntities[i].toString());
+	  labelEntity.value = labelEntities[i];
+	  labelEntity.save();
 	}
-
-	// Entity fields can be set based on event parameters
-	entity.currentGreeting = event.params._greeting;
-
-	// Entities can be written to the store with `.save()`
-	entity.save();
-}
+  }
+  
+  // Handles RelationshipTypesUpdated event
+  export function handleRelationshipTypesUpdated(event: RelationshipTypesUpdated): void {
+	let relationshipTypeEntities = event.params.newRelationshipTypes;
+  
+	for (let i = 0; i < relationshipTypeEntities.length; i++) {
+	  let relationshipTypeEntity = new RelationshipType(relationshipTypeEntities[i].toString());
+	  relationshipTypeEntity.value = relationshipTypeEntities[i];
+	  relationshipTypeEntity.save();
+	}
+  }

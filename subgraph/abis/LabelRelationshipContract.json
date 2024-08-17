@@ -1,0 +1,42 @@
+[
+    {
+      "inputs": [{"internalType": "uint256[]", "name": "newLabels", "type": "uint256[]"}],
+      "name": "setLabels",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{"internalType": "uint256[]", "name": "newRelationshipTypes", "type": "uint256[]"}],
+      "name": "setRelationshipTypes",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLabels",
+      "outputs": [{"internalType": "uint256[]", "name": "", "type": "uint256[]"}],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRelationshipTypes",
+      "outputs": [{"internalType": "uint256[]", "name": "", "type": "uint256[]"}],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{"indexed": false, "internalType": "uint256[]", "name": "newLabels", "type": "uint256[]"}],
+        "name": "LabelsUpdated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [{"indexed": false, "internalType": "uint256[]", "name": "newRelationshipTypes", "type": "uint256[]"}],
+        "name": "RelationshipTypesUpdated",
+        "type": "event"
+      }
+  ]

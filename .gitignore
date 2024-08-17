@@ -7,3 +7,9 @@
 /backend/.env
 /frontend/.env
 /backend/hedera/
+/subgraph/node_modules/
+/subgraph/.idea/
+/subgraph/build/
+/subgraph/generated/
+/subgraph/graph-node/data/
+/subgraph/subgraph.yaml

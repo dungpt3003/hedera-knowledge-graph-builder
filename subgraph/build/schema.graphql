@@ -1,4 +1,9 @@
-type Greeting @entity {
-    id: ID!
-    currentGreeting: String!
+type Label @entity {
+  id: ID!
+  value: BigInt!
+}
+
+type RelationshipType @entity {
+  id: ID!
+  value: BigInt!
 }
