@@ -13,3 +13,4 @@
 /subgraph/generated/
 /subgraph/graph-node/data/
 /subgraph/subgraph.yaml
+.env
