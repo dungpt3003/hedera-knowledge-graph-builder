@@ -601,7 +601,7 @@ const Content: React.FC<ContentProps> = ({
             setConnectionStatus={setConnectionStatus}
           />
           <div className='connectionstatus__container'>
-            <span className='h6 px-1'>Neo4j connection</span>
+            <span className='h6 px-1'>Knowledge Graph Status</span>
             <Typography variant='body-medium'>
               {!connectionStatus ? <StatusIndicator type='danger' /> : <StatusIndicator type='success' />}
               {connectionStatus ? (
@@ -693,7 +693,7 @@ const Content: React.FC<ContentProps> = ({
             >
               {buttonCaptions.showPreviewGraph} {selectedfileslength && completedfileNo ? `(${completedfileNo})` : ''}
             </ButtonWithToolTip>
-            <ButtonWithToolTip
+            {/* <ButtonWithToolTip
               text={tooltips.bloomGraph}
               placement='top'
               onClick={handleOpenGraphClick}
@@ -702,7 +702,7 @@ const Content: React.FC<ContentProps> = ({
               label='Open Graph with Bloom'
             >
               {buttonCaptions.exploreGraphWithBloom}
-            </ButtonWithToolTip>
+            </ButtonWithToolTip> */}
             <ButtonWithToolTip
               text={
                 !selectedfileslength ? tooltips.deleteFile : `${selectedfileslength} ${tooltips.deleteSelectedFiles}`

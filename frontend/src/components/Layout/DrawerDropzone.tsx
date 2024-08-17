@@ -118,7 +118,7 @@ const DrawerDropzone: React.FC<DrawerProps> = ({ isExpanded }) => {
                               ></GenericModal>
                             </div>
                           )}
-                          {APP_SOURCES.includes('s3') && (
+                          {/* {APP_SOURCES.includes('s3') && (
                             <div className={`outline-dashed imageBg ${process.env.ENV === 'PROD' ? 'w-[245px]' : ''}`}>
                               <S3Component openModal={openModal} />
                               <S3Modal hideModal={hideModal} open={showModal} />{' '}
@@ -129,7 +129,7 @@ const DrawerDropzone: React.FC<DrawerProps> = ({ isExpanded }) => {
                               <GCSButton openModal={openGCSModal} />
                               <GCSModal openGCSModal={openGCSModal} open={showGCSModal} hideModal={hideGCSModal} />
                             </div>
-                          )}
+                          )} */}
                         </>
                       ) : (
                         <></>
@@ -158,7 +158,7 @@ const DrawerDropzone: React.FC<DrawerProps> = ({ isExpanded }) => {
                           ></GenericModal>
                         </div>
                       )}
-                      {(APP_SOURCES != undefined && APP_SOURCES.includes('s3')) ||
+                      {/* {(APP_SOURCES != undefined && APP_SOURCES.includes('s3')) ||
                       (APP_SOURCES != undefined && APP_SOURCES.includes('gcs')) ? (
                         <>
                           {APP_SOURCES != undefined && APP_SOURCES.includes('s3') && (
@@ -176,7 +176,7 @@ const DrawerDropzone: React.FC<DrawerProps> = ({ isExpanded }) => {
                         </>
                       ) : (
                         <></>
-                      )}
+                      )} */}
                     </Flex>
                   </>
                 )}
