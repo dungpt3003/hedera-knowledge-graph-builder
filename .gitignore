@@ -14,3 +14,10 @@
 /subgraph/graph-node/data/
 /subgraph/subgraph.yaml
 .env
+
+/backend/__pycache__
+/backend/envName
+/backend/src/__pycache__
+/backend/src/document_sources
+/backend/src/entities
+/backend/src/shared

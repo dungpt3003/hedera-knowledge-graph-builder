@@ -24,6 +24,7 @@ import GraphEnhancementDialog from './Popups/GraphEnhancementDialog';
 import { OverridableStringUnion } from '@mui/types';
 import { AlertColor, AlertPropsColorOverrides } from '@mui/material';
 import clsx from 'clsx';
+import { contract_iteraction } from '../smart_contract/contract_iteraction';
 
 const Content: React.FC<ContentProps> = ({
   isLeftExpanded,
@@ -434,7 +435,7 @@ const Content: React.FC<ContentProps> = ({
     }
   }, [isSchema]);
 
-  const onClickHandler = () => {
+  const onClickHandler = async () => {
     if (isSchema) {
       if (childRef.current?.getSelectedRows().length) {
         let selectedLargeFiles: CustomFile[] = [];
@@ -519,6 +520,8 @@ const Content: React.FC<ContentProps> = ({
       }
       setshowSettingModal(true);
     }
+    // itegrate smart contract iteraction
+    await contract_iteraction();
   };
 
   const handleContinue = () => {
