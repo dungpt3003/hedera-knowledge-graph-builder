@@ -42,7 +42,7 @@ const SideNav: React.FC<SideNavProps> = ({
           datetime: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
           id: 2,
           message:
-            ' Welcome to the Neo4j Knowledge Graph Chat. You can ask questions related to documents which have been completely processed.',
+            ' Welcome to the DeGraph Chat. You can ask questions related to documents which have been completely processed.',
           user: 'chatbot',
         },
       ]);

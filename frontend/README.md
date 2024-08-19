@@ -1,4 +1,4 @@
-# Hedera Knowledge Graph Builder
+# DeGraph - Hedera Knowledge Graph Builder
 
 ReactJS app for knowledge graph visualization and interaction.
     
