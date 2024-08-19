@@ -4,7 +4,7 @@ import { GraphType, Messages, Scheme } from '../types';
 
 // Get the Url
 export const url = () => {
-  let url = window.location.href.replace('5173', '8000');
+  let url = window.location.href.replace('5173', '8004');
   if (process.env.BACKEND_API_URL) {
     url = process.env.BACKEND_API_URL;
   }
@@ -187,7 +187,7 @@ export const filterData = (
     filteredNodes = entityNode ? entityNode : [];
     // @ts-ignore
     filteredRelations = allRelationships.filter(
-      (rel) => !['PART_OF', 'FIRST_CHUNK', 'HAS_ENTITY', 'SIMILAR', 'NEXT_CHUNK'].includes(rel.caption)
+      (rel: any) => !['PART_OF', 'FIRST_CHUNK', 'HAS_ENTITY', 'SIMILAR', 'NEXT_CHUNK'].includes(rel.caption)
     );
     filteredScheme = Object.fromEntries(entityTypes.map((key) => [key, scheme[key]])) as Scheme;
   } else if (!graphType.includes('Document') && !graphType.includes('Entities') && graphType.includes('Chunk')) {
@@ -201,19 +201,19 @@ export const filterData = (
     // Document + Entity
     // @ts-ignore
     filteredNodes = allNodes.filter(
-      (node) =>
+      (node: any) =>
         node.labels.includes('Document') || (!node.labels.includes('Document') && !node.labels.includes('Chunk'))
     );
     // @ts-ignore
     filteredRelations = allRelationships.filter(
-      (rel) => !['PART_OF', 'FIRST_CHUNK', 'HAS_ENTITY', 'SIMILAR', 'NEXT_CHUNK'].includes(rel.caption)
+      (rel: any) => !['PART_OF', 'FIRST_CHUNK', 'HAS_ENTITY', 'SIMILAR', 'NEXT_CHUNK'].includes(rel.caption)
     );
   } else if (graphType.includes('Document') && !graphType.includes('Entities') && graphType.includes('Chunk')) {
     // Document + Chunk
     // @ts-ignore
     filteredNodes = allNodes.filter((node) => node.labels.includes('Document') || node.labels.includes('Chunk'));
     // @ts-ignore
-    filteredRelations = allRelationships.filter((rel) =>
+    filteredRelations = allRelationships.filter((rel: any) =>
       ['PART_OF', 'FIRST_CHUNK', 'SIMILAR', 'NEXT_CHUNK'].includes(rel.caption)
     );
     filteredScheme = { Document: scheme.Document, Chunk: scheme.Chunk };
@@ -249,5 +249,5 @@ export const calculateProcessingTime = (fileSizeBytes: number, processingTimePer
 };
 
 export const capitalize = (word: string): string => {
-  return `${word[0].toUpperCase()}${word.slice(1)}`;
+  return `${word?.[0]?.toUpperCase()}${word?.slice(1)}`;
 };

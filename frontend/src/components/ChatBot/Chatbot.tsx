@@ -258,6 +258,7 @@ const Chatbot: React.FC<ChatbotProps> = (props) => {
     });
   };
 
+
   return (
     <div className='n-bg-palette-neutral-bg-weak flex flex-col justify-between min-h-full max-h-full overflow-hidden'>
       <div className='flex overflow-y-auto pb-12 min-w-full chatBotContainer pl-3 pr-3'>
@@ -402,7 +403,7 @@ const Chatbot: React.FC<ChatbotProps> = (props) => {
             fluid
             onChange={handleInputChange}
           />
-          <Button type='submit' disabled={loading} size='medium'>
+          <Button color='success' type='submit' disabled={loading} size='medium'>
             {buttonCaptions.ask} {selectedRows != undefined && selectedRows.length > 0 && `(${selectedRows.length})`}
           </Button>
         </form>

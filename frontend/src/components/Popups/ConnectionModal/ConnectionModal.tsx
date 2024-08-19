@@ -175,7 +175,7 @@ export default function ConnectionModal({ open, setOpenConnection, setConnection
         <Dialog.Header id='form-dialog-title'>Connect to Neo4j</Dialog.Header>
         <Dialog.Content className='n-flex n-flex-col n-gap-token-4'>
           <Typography variant='body-medium' className='mb-4'>
-            <TextLink externalLink href='https://console.neo4j.io/'>
+            <TextLink color='success' externalLink href='https://console.neo4j.io/'>
               Don't have a Neo4j instance? Start for free today
             </TextLink>
           </Typography>
@@ -275,7 +275,7 @@ export default function ConnectionModal({ open, setOpenConnection, setConnection
               />
             </div>
           </div>
-          <Button loading={isLoading} disabled={isDisabled} onClick={() => submitConnection()}>
+          <Button loading={isLoading} color="success" disabled={isDisabled} onClick={() => submitConnection()}>
             {buttonCaptions.connect}
           </Button>
         </Dialog.Content>

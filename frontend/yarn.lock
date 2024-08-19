@@ -927,6 +927,11 @@
   resolved "https://registry.yarnpkg.com/@neo4j-ndl/base/-/base-2.11.6.tgz#3eacf4e41a86d84e0663f905a769ef95d3fa9cc2"
   integrity sha512-HA4YWgN3GcGFzDcAj1maYjYgfD8mwHcFkwh/BaY1964/A2T9BCffHsxtQaPOW24AIhdO5tMMH72qwcvZB2PvlQ==
 
+"@neo4j-ndl/base@^2.12.12":
+  version "2.12.12"
+  resolved "https://registry.yarnpkg.com/@neo4j-ndl/base/-/base-2.12.12.tgz#402818b0fb71d7c283089426c9bcf6b9cd085587"
+  integrity sha512-3fFUNbXftHAMpB3EW76TAmKLOUn+KphKZnE3fINrUYO+mWsTSnsWibBOG3vPVp+tKfehPpJ9dSHPajmEYHUmgQ==
+
 "@neo4j-ndl/react@^2.15.10":
   version "2.15.10"
   resolved "https://registry.yarnpkg.com/@neo4j-ndl/react/-/react-2.15.10.tgz#c109633adc3fd08fb510b3b57e70a1ed5216bf4f"
