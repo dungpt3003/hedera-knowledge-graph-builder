@@ -43,6 +43,17 @@ export default function Header({ themeMode, toggleTheme }: { themeMode: string; 
               alt='Neo4j Logo'
             />
           </Typography>
+
+          <Typography
+            className='ml-2 mb-1'
+            style={{ fontFamily: 'StyreneA, Arial, serif' }}
+            variant='h5'
+            component='a'
+            href='#app-bar-with-responsive-menu'
+            sx={{}}
+          >
+            Hedera
+          </Typography>
         </section>
         <section className='items-center justify-end w-1/3 grow-0 flex'>
           <div>

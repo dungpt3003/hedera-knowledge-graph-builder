@@ -23,6 +23,7 @@ import GraphViewModal from './Graph/GraphViewModal';
 import GraphEnhancementDialog from './Popups/GraphEnhancementDialog';
 import { OverridableStringUnion } from '@mui/types';
 import { AlertColor, AlertPropsColorOverrides } from '@mui/material';
+import clsx from 'clsx';
 
 const Content: React.FC<ContentProps> = ({
   isLeftExpanded,
@@ -32,7 +33,7 @@ const Content: React.FC<ContentProps> = ({
   setIsSchema,
   showEnhancementDialog,
   setshowEnhancementDialog,
-  closeSettingModal
+  closeSettingModal,
 }) => {
   const [init, setInit] = useState<boolean>(false);
   const [openConnection, setOpenConnection] = useState<boolean>(false);
@@ -631,11 +632,20 @@ const Content: React.FC<ContentProps> = ({
             </Typography>
           </div>
           <div>
-            <Button className='mr-2.5' onClick={openGraphEnhancementDialog} disabled={!connectionStatus}>
+            <Button
+              color='success'
+              className='mr-2.5 !rounded-full'
+              onClick={openGraphEnhancementDialog}
+              disabled={!connectionStatus}
+            >
               Graph Enhancement
             </Button>
             {!connectionStatus ? (
-              <Button className='mr-2.5' onClick={() => setOpenConnection(true)}>
+              <Button
+                color='success'
+                className='mr-2.5 bg-strong !rounded-full'
+                onClick={() => setOpenConnection(true)}
+              >
                 {buttonCaptions.connectToNeo4j}
               </Button>
             ) : (
@@ -678,7 +688,7 @@ const Content: React.FC<ContentProps> = ({
               label='generate graph'
               onClick={onClickHandler}
               disabled={disableCheck}
-              className='mr-0.5'
+              className={clsx('mr-0.5 !rounded-full', { '!bg-primary-200': !disableCheck })}
             >
               {buttonCaptions.generateGraph}{' '}
               {selectedfileslength && !disableCheck && newFilecheck ? `(${newFilecheck})` : ''}
@@ -688,7 +698,7 @@ const Content: React.FC<ContentProps> = ({
               placement='top'
               onClick={handleGraphView}
               disabled={showGraphCheck}
-              className='mr-0.5'
+              className={clsx('mr-0.5 !rounded-full', { '!bg-primary-200': !disableCheck })}
               label='show graph'
             >
               {buttonCaptions.showPreviewGraph} {selectedfileslength && completedfileNo ? `(${completedfileNo})` : ''}
@@ -710,7 +720,7 @@ const Content: React.FC<ContentProps> = ({
               placement='top'
               onClick={() => setshowDeletePopUp(true)}
               disabled={!selectedfileslength}
-              className='ml-0.5'
+              className={clsx('ml-0.5 !rounded-full', { '!bg-primary-200': !disableCheck })}
               label='Delete Files'
             >
               {buttonCaptions.deleteFiles}

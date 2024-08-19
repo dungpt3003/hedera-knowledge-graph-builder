@@ -37,6 +37,7 @@ const ButtonWithToolTip = ({
           className={className}
           loading={loading}
           fill={fill}
+          color='success'
         >
           {children}
         </Button>

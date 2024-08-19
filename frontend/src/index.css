@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'StyreneA';
+  src: local('StyreneA'), url(./assets/font/StyreneA-Thin-Trial-BF63f6cbd91263f.otf) format('opentype');
+}
+
 body {
   margin: 0;
+  font-family: StyreneA, Arial, serif !important;
 }
 
 * {
