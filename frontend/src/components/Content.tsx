@@ -632,11 +632,20 @@ const Content: React.FC<ContentProps> = ({
             </Typography>
           </div>
           <div>
-            <Button color='success' className='mr-2.5 !rounded-full' onClick={openGraphEnhancementDialog} disabled={!connectionStatus}>
+            <Button
+              color='success'
+              className='mr-2.5 !rounded-full'
+              onClick={openGraphEnhancementDialog}
+              disabled={!connectionStatus}
+            >
               Graph Enhancement
             </Button>
             {!connectionStatus ? (
-              <Button color='success' className='mr-2.5 bg-strong !rounded-full' onClick={() => setOpenConnection(true)}>
+              <Button
+                color='success'
+                className='mr-2.5 bg-strong !rounded-full'
+                onClick={() => setOpenConnection(true)}
+              >
                 {buttonCaptions.connectToNeo4j}
               </Button>
             ) : (

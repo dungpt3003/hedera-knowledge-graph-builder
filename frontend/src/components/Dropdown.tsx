@@ -27,10 +27,11 @@ const DropdownComponent: React.FC<ReusableDropdownProps> = ({
   const allOptions = useMemo(() => options, [options]);
   return (
     <>
-      <div className={view === 'ContentView' ? 'w-[150px]' : ''}>
+      <div className={view === 'ContentView' ? 'w-[124px]' : ''}>
         <Dropdown
           type='select'
           aria-label='A selection dropdown'
+          color='success'
           selectProps={{
             onChange: handleChange,
             options: allOptions?.map((option) => {
