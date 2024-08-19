@@ -80,7 +80,7 @@ const DrawerDropzone: React.FC<DrawerProps> = ({ isExpanded }) => {
             <div className='relative h-full'>
               <div className='flex flex-col h-full'>
                 <div
-                  className={`mx-6 flex flex-none items-center justify-between ${
+                  className={`mx-3 flex flex-none items-center justify-between ${
                     process.env.ENV != 'PROD' ? 'pb-6' : 'pb-5'
                   }`}
                 >
@@ -89,7 +89,7 @@ const DrawerDropzone: React.FC<DrawerProps> = ({ isExpanded }) => {
                       <Typography variant='body-medium'>
                         {!isBackendConnected ? <StatusIndicator type='danger' /> : <StatusIndicator type='success' />}
                       </Typography>
-                      <span>Backend connection status</span>
+                      <span style={{ fontFamily: 'StyreneA, Arial, serif' }}>Backend connection status</span>
                     </Typography>
                   )}
                 </div>
