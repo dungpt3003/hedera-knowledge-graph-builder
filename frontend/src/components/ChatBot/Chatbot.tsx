@@ -401,6 +401,7 @@ const Chatbot: React.FC<ChatbotProps> = (props) => {
             type='text'
             value={inputMessage}
             fluid
+            
             onChange={handleInputChange}
           />
           <Button color='success' type='submit' disabled={loading} size='medium'>
