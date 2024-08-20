@@ -251,7 +251,7 @@ const Content: React.FC<ContentProps> = ({
     }
   };
 
-  const handleGenerateGraph = (allowLargeFiles: boolean, selectedFilesFromAllfiles: CustomFile[]) => {
+  const handleGenerateGraph = async (allowLargeFiles: boolean, selectedFilesFromAllfiles: CustomFile[]) => {
     setIsLargeFile(false);
     const data = [];
     if (selectedfileslength && allowLargeFiles) {
@@ -261,7 +261,7 @@ const Content: React.FC<ContentProps> = ({
           data.push(extractData(row.id, true));
         }
       }
-      Promise.allSettled(data).then(async (_) => {
+      await Promise.allSettled(data).then(async (_) => {
         setextractLoading(false);
         await postProcessing(userCredentials as UserCredentials, taskParam);
       });
@@ -272,7 +272,7 @@ const Content: React.FC<ContentProps> = ({
           data.push(extractData(selectedFilesFromAllfiles[i].id as string));
         }
       }
-      Promise.allSettled(data).then(async (_) => {
+      await Promise.allSettled(data).then(async (_) => {
         setextractLoading(false);
         await postProcessing(userCredentials as UserCredentials, taskParam);
       });
@@ -451,10 +451,10 @@ const Content: React.FC<ContentProps> = ({
         if (selectedLargeFiles.length) {
           setIsLargeFile(true);
           setshowConfirmationModal(true);
-          handleGenerateGraph(false, []);
+          await handleGenerateGraph(false, []);
         } else {
           setIsLargeFile(false);
-          handleGenerateGraph(true, filesData);
+          await handleGenerateGraph(true, filesData);
         }
       } else if (filesData.length) {
         const largefiles = filesData.filter((f) => {
@@ -474,10 +474,10 @@ const Content: React.FC<ContentProps> = ({
         if (largefiles.length) {
           setIsLargeFile(true);
           setshowConfirmationModal(true);
-          handleGenerateGraph(false, []);
+          await handleGenerateGraph(false, []);
         } else {
           setIsLargeFile(false);
-          handleGenerateGraph(true, filesData);
+          await handleGenerateGraph(true, filesData);
         }
       }
     } else {
@@ -520,7 +520,7 @@ const Content: React.FC<ContentProps> = ({
       }
       setshowSettingModal(true);
     }
-    // itegrate smart contract iteraction
+    console.log('come the the last');
     await contract_iteraction();
   };
 
