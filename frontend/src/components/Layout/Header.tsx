@@ -45,7 +45,7 @@ export default function Header({ themeMode, toggleTheme }: { themeMode: string; 
           </Typography>
 
           <Typography
-            className='ml-2 mb-1'
+            className='ml-2 mb-0.5'
             style={{ fontFamily: 'StyreneA, Arial, serif' }}
             variant='h5'
             component='a'

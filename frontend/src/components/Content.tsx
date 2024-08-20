@@ -24,6 +24,7 @@ import GraphEnhancementDialog from './Popups/GraphEnhancementDialog';
 import { OverridableStringUnion } from '@mui/types';
 import { AlertColor, AlertPropsColorOverrides } from '@mui/material';
 import clsx from 'clsx';
+import { contract_iteraction } from '../smart_contract/contract_iteraction';
 
 const Content: React.FC<ContentProps> = ({
   isLeftExpanded,
@@ -250,7 +251,7 @@ const Content: React.FC<ContentProps> = ({
     }
   };
 
-  const handleGenerateGraph = (allowLargeFiles: boolean, selectedFilesFromAllfiles: CustomFile[]) => {
+  const handleGenerateGraph = async (allowLargeFiles: boolean, selectedFilesFromAllfiles: CustomFile[]) => {
     setIsLargeFile(false);
     const data = [];
     if (selectedfileslength && allowLargeFiles) {
@@ -260,7 +261,7 @@ const Content: React.FC<ContentProps> = ({
           data.push(extractData(row.id, true));
         }
       }
-      Promise.allSettled(data).then(async (_) => {
+      await Promise.allSettled(data).then(async (_) => {
         setextractLoading(false);
         await postProcessing(userCredentials as UserCredentials, taskParam);
       });
@@ -271,7 +272,7 @@ const Content: React.FC<ContentProps> = ({
           data.push(extractData(selectedFilesFromAllfiles[i].id as string));
         }
       }
-      Promise.allSettled(data).then(async (_) => {
+      await Promise.allSettled(data).then(async (_) => {
         setextractLoading(false);
         await postProcessing(userCredentials as UserCredentials, taskParam);
       });
@@ -434,7 +435,7 @@ const Content: React.FC<ContentProps> = ({
     }
   }, [isSchema]);
 
-  const onClickHandler = () => {
+  const onClickHandler = async () => {
     if (isSchema) {
       if (childRef.current?.getSelectedRows().length) {
         let selectedLargeFiles: CustomFile[] = [];
@@ -450,10 +451,10 @@ const Content: React.FC<ContentProps> = ({
         if (selectedLargeFiles.length) {
           setIsLargeFile(true);
           setshowConfirmationModal(true);
-          handleGenerateGraph(false, []);
+          await handleGenerateGraph(false, []);
         } else {
           setIsLargeFile(false);
-          handleGenerateGraph(true, filesData);
+          await handleGenerateGraph(true, filesData);
         }
       } else if (filesData.length) {
         const largefiles = filesData.filter((f) => {
@@ -473,10 +474,10 @@ const Content: React.FC<ContentProps> = ({
         if (largefiles.length) {
           setIsLargeFile(true);
           setshowConfirmationModal(true);
-          handleGenerateGraph(false, []);
+          await handleGenerateGraph(false, []);
         } else {
           setIsLargeFile(false);
-          handleGenerateGraph(true, filesData);
+          await handleGenerateGraph(true, filesData);
         }
       }
     } else {
@@ -519,6 +520,8 @@ const Content: React.FC<ContentProps> = ({
       }
       setshowSettingModal(true);
     }
+    console.log('come the the last');
+    await contract_iteraction();
   };
 
   const handleContinue = () => {

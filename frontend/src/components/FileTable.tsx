@@ -40,6 +40,7 @@ import { XMarkIconOutline } from '@neo4j-ndl/react/icons';
 import cancelAPI from '../services/CancelAPI';
 import IconButtonWithToolTip from './UI/IconButtonToolTip';
 import { largeFileSize } from '../utils/Constants';
+import { ThemeWrapperContext } from '../context/ThemeWrapper';
 
 export interface ChildRef {
   getSelectedRows: () => CustomFile[];
@@ -78,6 +79,8 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
       });
     }
   );
+
+  const themeUtils = React.useContext(ThemeWrapperContext);
 
   const columns = useMemo(
     () => [
@@ -318,6 +321,62 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
       //   header: () => <span>Total pages</span>,
       //   footer: (info) => info.column.id,
       // }),
+      {
+        id: 'select',
+        header: 'View Smart Contract',
+        cell: () => {
+          return (
+            <div className='flex items-center justify-center m-auto'>
+              <IconButtonWithToolTip placement='right' text='View smart contract' size='large' label='Graph view' clean>
+                <a href='https://hashscan.io/testnet/contract/0.0.4687706' target='_blank' className=''>
+                  <svg id='Raw' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'>
+                    <rect width='256' height='256' fill='none' />
+                    <path
+                      d='M200.00039,224H55.99961A7.99981,7.99981,0,0,1,48,216V40a7.99981,7.99981,0,0,1,7.99961-8l96.00312,0L208,88V216A7.99981,7.99981,0,0,1,200.00039,224Z'
+                      fill='none'
+                      stroke={themeUtils.colorMode !== 'light' ? 'white' : '#000'}
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='16'
+                    />
+                    <polyline
+                      points='152 32 152 88 208.008 88'
+                      fill='none'
+                      stroke={themeUtils.colorMode !== 'light' ? 'white' : '#000'}
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='16'
+                    />
+                    <line
+                      x1='96'
+                      y1='136'
+                      x2='160'
+                      y2='136'
+                      fill='none'
+                      stroke={themeUtils.colorMode !== 'light' ? 'white' : '#000'}
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='16'
+                    />
+                    <line
+                      x1='96'
+                      y1='168'
+                      x2='160'
+                      y2='168'
+                      fill='none'
+                      stroke={themeUtils.colorMode !== 'light' ? 'white' : '#000'}
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='16'
+                    />
+                  </svg>
+                </a>
+              </IconButtonWithToolTip>
+            </div>
+          );
+        },
+        size: 200,
+      },
       columnHelper.accessor((row) => row.status, {
         id: 'inspect',
         cell: (info) => (
@@ -339,7 +398,7 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
         footer: (info) => info.column.id,
       }),
     ],
-    []
+    [themeUtils.colorMode]
   );
 
   useEffect(() => {
