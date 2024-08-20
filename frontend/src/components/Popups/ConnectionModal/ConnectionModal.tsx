@@ -174,11 +174,11 @@ export default function ConnectionModal({ open, setOpenConnection, setConnection
       >
         <Dialog.Header id='form-dialog-title'>Connect to Neo4j</Dialog.Header>
         <Dialog.Content className='n-flex n-flex-col n-gap-token-4'>
-          <Typography variant='body-medium' className='mb-4'>
+          {/* <Typography variant='body-medium' className='mb-4'>
             <TextLink color='success' externalLink href='https://console.neo4j.io/'>
               Don't have a Neo4j instance? Start for free today
             </TextLink>
-          </Typography>
+          </Typography> */}
           {connectionMessage?.type !== 'unknown' && (
             <Banner
               name='Connection Modal'

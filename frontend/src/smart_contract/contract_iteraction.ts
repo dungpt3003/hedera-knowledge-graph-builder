@@ -6,7 +6,7 @@ import qs from 'qs';
 const PROVIDER_URL = import.meta.env.VITE_PROVIDER_URL; // Replace with your Hedera testnet provider
 const PRIVATE_KEY = import.meta.env.VITE_PRIVATE_KEY; // Replace with your private key
 const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS; // Replace with your deployed contract address
-const WORD_LIST_PATH = `./src/smart_contract/dictionary.json`; // Path to your word list JSON file
+//const WORD_LIST_PATH = `./src/smart_contract/dictionary.json`; // Path to your word list JSON file
 
 // ABI for the updated LabelRelationshipContract
 const CONTRACT_ABI = [

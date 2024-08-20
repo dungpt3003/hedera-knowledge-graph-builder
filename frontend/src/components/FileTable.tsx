@@ -328,7 +328,7 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
           return (
             <div className='flex items-center justify-center m-auto'>
               <IconButtonWithToolTip placement='right' text='View smart contract' size='large' label='Graph view' clean>
-                <a href='https://hashscan.io/testnet/contract/0.0.4687706' target='_blank' className=''>
+                <a href='https://hashscan.io/testnet/contract/0.0.4710846' target='_blank' className=''>
                   <svg id='Raw' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'>
                     <rect width='256' height='256' fill='none' />
                     <path

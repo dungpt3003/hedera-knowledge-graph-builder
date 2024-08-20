@@ -67,7 +67,7 @@ export default function Header({ themeMode, toggleTheme }: { themeMode: string; 
             >
               <IconButtonWithToolTip
                 text={tooltips.documentation}
-                onClick={() => handleURLClick('https://neo4j.com/labs/genai-ecosystem/llm-graph-builder')}
+                onClick={() => handleURLClick('http://degraph.var-meta.com:8090/docs')}
                 size='large'
                 clean
                 placement='left'
@@ -78,7 +78,7 @@ export default function Header({ themeMode, toggleTheme }: { themeMode: string; 
 
               <IconButtonWithToolTip
                 label={tooltips.github}
-                onClick={() => handleURLClick('https://github.com/neo4j-labs/llm-graph-builder/issues')}
+                onClick={() => handleURLClick('https://github.com/dungpt3003/hedera-knowledge-graph-builder/issues')}
                 text={tooltips.github}
                 size='large'
                 clean
