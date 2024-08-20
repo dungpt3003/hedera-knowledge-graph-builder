@@ -17,8 +17,7 @@ Each component of the application is running separately:
 - Subgraph: Follow the installation guide at [subgraph/README.md](frontend/README.md)
 
 ## Demo
-
-## Screenshots
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/7QjEPVPFD6Q/0.jpg)](https://www.youtube.com/watch?v=7QjEPVPFD6Q "DeGraph - Hedera Knowldege Graph Builder - Demo")
 
 ## Acknowledgement
 The DeGraph project is developed upon the work of:
