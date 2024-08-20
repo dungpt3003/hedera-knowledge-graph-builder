@@ -36,15 +36,19 @@ export default function Header({ themeMode, toggleTheme }: { themeMode: string; 
         aria-label='main navigation'
       >
         <section className='flex w-1/3 shrink-0 grow-0 items-center grow min-w-[200px]'>
-          <Typography variant='h6' component='a' href='#app-bar-with-responsive-menu' sx={{}}>
+          <Typography className="ml-1" variant='h6' component='a' href='#app-bar-with-responsive-menu' sx={{}}>
             <img
-              src={themeMode === 'dark' ? Neo4jLogoBW : Neo4jLogoColor}
-              className='h-8 min-h-8 min-w-8'
+              src={
+                themeMode === 'dark'
+                  ? '/degraph_logo_horizontal.webp'
+                  : '/degraph_logo_horizontal.webp'
+              }
+              className='h-8 min-h-8 min-w-8 rounded-[1px]'
               alt='Neo4j Logo'
             />
           </Typography>
 
-          <Typography
+          {/* <Typography
             className='ml-2 mb-0.5'
             style={{ fontFamily: 'StyreneA, Arial, serif' }}
             variant='h5'
@@ -53,7 +57,7 @@ export default function Header({ themeMode, toggleTheme }: { themeMode: string; 
             sx={{}}
           >
             Hedera
-          </Typography>
+          </Typography> */}
         </section>
         <section className='items-center justify-end w-1/3 grow-0 flex'>
           <div>
