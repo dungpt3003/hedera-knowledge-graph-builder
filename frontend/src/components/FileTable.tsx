@@ -318,6 +318,18 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
       //   header: () => <span>Total pages</span>,
       //   footer: (info) => info.column.id,
       // }),
+      {
+        id: 'select',
+        header: 'View Smart Contract',
+        cell: () => {
+          return (
+            <a href='https://hashscan.io/testnet/contract/0.0.4687706' className='px-1'>
+              <u>https://hashscan.io/testnet/contract/0.0.4687706</u>
+            </a>
+          );
+        },
+        size: 200,
+      },
       columnHelper.accessor((row) => row.status, {
         id: 'inspect',
         cell: (info) => (
