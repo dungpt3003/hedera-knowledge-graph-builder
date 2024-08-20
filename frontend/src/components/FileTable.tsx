@@ -323,33 +323,53 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
         header: 'View Smart Contract',
         cell: () => {
           return (
-            <>
+            <div className='flex items-center justify-center m-auto'>
               <IconButtonWithToolTip placement='right' text='View smart contract' size='large' label='Graph view' clean>
-                <a href='https://hashscan.io/testnet/contract/0.0.4687706' target='_blank' className='px-1'>
+                <a href='https://hashscan.io/testnet/contract/0.0.4687706' target='_blank' className=''>
                   <svg id='Raw' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'>
                     <rect width='256' height='256' fill='none' />
                     <path
-                      d='M128,55.99219C48,55.99219,16,128,16,128s32,71.99219,112,71.99219S240,128,240,128,208,55.99219,128,55.99219Z'
+                      d='M200.00039,224H55.99961A7.99981,7.99981,0,0,1,48,216V40a7.99981,7.99981,0,0,1,7.99961-8l96.00312,0L208,88V216A7.99981,7.99981,0,0,1,200.00039,224Z'
                       fill='none'
-                      stroke='#000'
+                      stroke='#344054'
                       stroke-linecap='round'
                       stroke-linejoin='round'
-                      stroke-width='24'
+                      stroke-width='16'
                     />
-                    <circle
-                      cx='128'
-                      cy='128'
-                      r='32'
+                    <polyline
+                      points='152 32 152 88 208.008 88'
                       fill='none'
-                      stroke='#000'
+                      stroke='#344054'
                       stroke-linecap='round'
                       stroke-linejoin='round'
-                      stroke-width='24'
+                      stroke-width='16'
+                    />
+                    <line
+                      x1='96'
+                      y1='136'
+                      x2='160'
+                      y2='136'
+                      fill='none'
+                      stroke='#344054'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='16'
+                    />
+                    <line
+                      x1='96'
+                      y1='168'
+                      x2='160'
+                      y2='168'
+                      fill='none'
+                      stroke='#344054'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='16'
                     />
                   </svg>
                 </a>
               </IconButtonWithToolTip>
-            </>
+            </div>
           );
         },
         size: 200,
