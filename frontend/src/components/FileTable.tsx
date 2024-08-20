@@ -40,6 +40,7 @@ import { XMarkIconOutline } from '@neo4j-ndl/react/icons';
 import cancelAPI from '../services/CancelAPI';
 import IconButtonWithToolTip from './UI/IconButtonToolTip';
 import { largeFileSize } from '../utils/Constants';
+import { ThemeWrapperContext } from '../context/ThemeWrapper';
 
 export interface ChildRef {
   getSelectedRows: () => CustomFile[];
@@ -78,6 +79,8 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
       });
     }
   );
+
+  const themeUtils = React.useContext(ThemeWrapperContext);
 
   const columns = useMemo(
     () => [
@@ -331,7 +334,7 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
                     <path
                       d='M200.00039,224H55.99961A7.99981,7.99981,0,0,1,48,216V40a7.99981,7.99981,0,0,1,7.99961-8l96.00312,0L208,88V216A7.99981,7.99981,0,0,1,200.00039,224Z'
                       fill='none'
-                      stroke='#344054'
+                      stroke={themeUtils.colorMode !== 'light' ? 'white' : '#000'}
                       stroke-linecap='round'
                       stroke-linejoin='round'
                       stroke-width='16'
@@ -339,7 +342,7 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
                     <polyline
                       points='152 32 152 88 208.008 88'
                       fill='none'
-                      stroke='#344054'
+                      stroke={themeUtils.colorMode !== 'light' ? 'white' : '#000'}
                       stroke-linecap='round'
                       stroke-linejoin='round'
                       stroke-width='16'
@@ -350,7 +353,7 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
                       x2='160'
                       y2='136'
                       fill='none'
-                      stroke='#344054'
+                      stroke={themeUtils.colorMode !== 'light' ? 'white' : '#000'}
                       stroke-linecap='round'
                       stroke-linejoin='round'
                       stroke-width='16'
@@ -361,7 +364,7 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
                       x2='160'
                       y2='168'
                       fill='none'
-                      stroke='#344054'
+                      stroke={themeUtils.colorMode !== 'light' ? 'white' : '#000'}
                       stroke-linecap='round'
                       stroke-linejoin='round'
                       stroke-width='16'
@@ -395,7 +398,7 @@ const FileTable = forwardRef<ChildRef, FileTableProps>((props, ref) => {
         footer: (info) => info.column.id,
       }),
     ],
-    []
+    [themeUtils.colorMode]
   );
 
   useEffect(() => {
