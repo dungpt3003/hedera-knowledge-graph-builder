@@ -601,5 +601,35 @@ async def get_unconnected_nodes_list(uri=Form(), userName=Form(), password=Form(
             close_db_connection(graph,"delete_unconnected_nodes")
         gc.collect()
 
+@app.get("/get_dictionary")
+async def get_dictionary():
+    content = ""
+    try:
+        with open('./dictionary/dictionary.json', 'r', encoding='utf-8') as file:
+            # Read the contents of the file
+            content = file.read()
+
+        return create_api_response("Success", data=content, message="This is the content returned")
+    except Exception as e:
+        job_status = "Failed"
+        message="Cannot read the file"
+        error_message = str(e)
+        return create_api_response(job_status, message=message, error=error_message)
+
+@app.post("/update_dictionary")
+async def update_dictionary(request: Request):
+    try:
+        dataRaw = await request.body()
+        data = dataRaw.decode('utf-8')  # Convert bytes to string if needed
+        with open('./dictionary/dictionary.json', 'w', encoding='utf-8') as file:
+            # Write data to the file
+            file.write(data)
+        return create_api_response("Success", message="Write successfully")
+    except Exception as e:
+        job_status = "Failed"
+        message="Cannot write the file"
+        error_message = str(e)
+        return create_api_response(job_status, message=message, error=error_message)
+
 if __name__ == "__main__":
     uvicorn.run(app)

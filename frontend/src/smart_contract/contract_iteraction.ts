@@ -1,14 +1,12 @@
-const { ethers } = require('ethers');
-const axios = require('axios');
-const fs = require('fs');
-const qs = require('qs');
-import 'dotenv/config';
+import { ethers } from 'ethers';
+import axios from 'axios';
+import qs from 'qs';
 
 // Replace with your values
-const PROVIDER_URL = process.env.PROVIDER_URL; // Replace with your Hedera testnet provider
-const PRIVATE_KEY = process.env.PRIVATE_KEY; // Replace with your private key
-const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS; // Replace with your deployed contract address
-const WORD_LIST_PATH = `${__dirname}/dictionary.json`; // Path to your word list JSON file
+const PROVIDER_URL = import.meta.env.VITE_PROVIDER_URL; // Replace with your Hedera testnet provider
+const PRIVATE_KEY = import.meta.env.VITE_PRIVATE_KEY; // Replace with your private key
+const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS; // Replace with your deployed contract address
+const WORD_LIST_PATH = `./src/smart_contract/dictionary.json`; // Path to your word list JSON file
 
 // ABI for the updated LabelRelationshipContract
 const CONTRACT_ABI = [
@@ -44,19 +42,21 @@ const CONTRACT_ABI = [
 
 export async function contract_iteraction() {
   try {
+    const SERVER_ENDPOINT = `${import.meta.env.VITE_API_ENDPOINT}`; // Replace with your actual API endpoint
     // Step 1: Load the word list from JSON file
-    const wordList = JSON.parse(fs.readFileSync(WORD_LIST_PATH, 'utf8'));
+    const dictionaryResponse = await axios.get(`${SERVER_ENDPOINT}/get_dictionary`);
+    const dictionaryRaw = dictionaryResponse.data.data;
+    const wordList = JSON.parse(dictionaryRaw);
 
     // Step 2: Call API to get schema (labels and relationship types)
-    const API_ENDPOINT = process.env.API_ENDPOINT; // Replace with your actual API endpoint
     const API_PAYLOAD = {
-      uri: process.env.NEO4J_URI,
-      userName: process.env.NEO4J_USERNAME,
-      password: process.env.NEO4J_PASSWORD,
-      database: process.env.NEO4J_DATABASE,
+      uri: import.meta.env.VITE_NEO4J_URI,
+      userName: import.meta.env.VITE_NEO4J_USERNAME,
+      password: import.meta.env.VITE_NEO4J_PASSWORD,
+      database: import.meta.env.VITE_NEO4J_DATABASE,
     };
 
-    const apiResponse = await axios.post(API_ENDPOINT, qs.stringify(API_PAYLOAD), {
+    const apiResponse = await axios.post(`${SERVER_ENDPOINT}/schema` as string, qs.stringify(API_PAYLOAD), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         accept: 'application/json',
@@ -81,7 +81,13 @@ export async function contract_iteraction() {
         }
       });
       // Save the updated word list to the JSON file
-      fs.writeFileSync(WORD_LIST_PATH, JSON.stringify(wordList, null, 2));
+      // fs.writeFileSync(WORD_LIST_PATH, JSON.stringify(wordList, null, 2));
+      const dataSent = JSON.stringify(wordList, null, 2);
+      await axios.post(`${SERVER_ENDPOINT}/update_dictionary`, dataSent, {
+        headers: {
+          'Content-Type': 'text/plain', // or 'application/json' if the server expects JSON
+        },
+      });
 
       // Step 3: Convert the labels and relationshipTypes to index lists
       const labelIndexes = labels.map((label) => wordList[label] || 0); // Convert labels to indexes, default to 0 if not found
@@ -92,8 +98,8 @@ export async function contract_iteraction() {
 
       // Step 4: Connect to Hedera and the LabelRelationship contract
       const provider = new ethers.JsonRpcProvider(PROVIDER_URL);
-      const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
-      const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, wallet);
+      const wallet = new ethers.Wallet(PRIVATE_KEY as string, provider);
+      const contract = new ethers.Contract(CONTRACT_ADDRESS as string, CONTRACT_ABI, wallet);
 
       // Step 5: Write label indexes to the contract
       console.log('Writing label indexes to the smart contract...');
